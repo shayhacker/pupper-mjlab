@@ -232,10 +232,11 @@ _GAIT_FREQ_MULT: dict[str, float] = {}
 #
 #   uv run python -m mjlab.tasks.pupper_gait.visualize_reference --gait lift
 # =============================================================================
-_GAIT_TOUCHDOWN["lift"] = None  # (FR, FL, BR, LB) touchdown phases in [0, 1)
-_GAIT_STRIDE["lift"] = None  # fore-aft half-stride [m]
-_GAIT_STANCE_Z["lift"] = None  # foot depth below the hip during stance [m]
-_GAIT_SWING_LIFT["lift"] = None  # foot rise above the stance plane in swing [m]
+# (FR, FL, BR, LB) touchdown phases in [0, 1)
+_GAIT_TOUCHDOWN["lift"] = (0.0, 0.5, 0.5, 0.0)
+_GAIT_STRIDE["lift"] = 0.0  # fore-aft half-stride [m]
+_GAIT_STANCE_Z["lift"] = -0.14  # foot depth below the hip during stance [m]
+_GAIT_SWING_LIFT["lift"] = 0.09  # foot rise above the stance plane in swing [m]
 
 
 def _base_cycle(
