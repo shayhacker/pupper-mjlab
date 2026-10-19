@@ -88,8 +88,10 @@ def main() -> None:
   env_cfg.scene.num_envs = len(commands) * args.envs_per_command
   agent_cfg = load_rl_cfg(args.task)
 
+  # Absolute: wandb may download through a shared service process (e.g. one a
+  # notebook kernel started) whose cwd is not ours.
   ckpt, _ = get_wandb_checkpoint_path(
-    Path("logs/rsl_rl") / agent_cfg.experiment_name,
+    (Path("logs/rsl_rl") / agent_cfg.experiment_name).resolve(),
     Path(args.wandb_run_path),
     args.checkpoint,
   )
